@@ -6,7 +6,7 @@
       app
     >
       <v-list dense>
-        <v-list-tile @click="">
+        <v-list-tile to="/">
           <v-list-tile-action>
             <v-icon>home</v-icon>
           </v-list-tile-action>
@@ -14,7 +14,7 @@
             <v-list-tile-title>Start New Game</v-list-tile-title>
           </v-list-tile-content>
         </v-list-tile>
-        <v-list-tile @click="">
+        <v-list-tile to="/about">
           <v-list-tile-action>
             <v-icon>contact_mail</v-icon>
           </v-list-tile-action>
@@ -31,13 +31,14 @@
     <v-content>
       <v-container fluid fill-height>
         <v-layout
+          justify-center
           row
         >
           <router-view/>
         </v-layout>
       </v-container>
     </v-content>
-    <v-footer color="indigo" app>
+    <v-footer color="light-blue darken-4" app>
       <span class="white--text">&nbsp; &copy; 2018</span>
     </v-footer>
   </v-app>
@@ -47,9 +48,6 @@
   export default {
     data: () => ({
       drawer: false
-    }),
-    props: {
-      source: String
-    }
+    })
   }
 </script>
