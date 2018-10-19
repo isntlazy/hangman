@@ -15,8 +15,8 @@
       </v-card-title>
 
       <v-card-actions>
-        <v-btn to="/player_game" dark large>I want to solve the word</v-btn>
-        <v-btn to="/computer_game" large>I want computer to solve my word</v-btn>
+        <v-btn @click="activatePlayerGameMode" to="/game" dark large>I want to solve the word</v-btn>
+        <v-btn @click="activateComputerGameMode" to="/game" large>I want computer to solve my word</v-btn>
         <v-spacer></v-spacer>
       </v-card-actions>
 
@@ -32,11 +32,11 @@
 <script>
   import { mapActions } from 'vuex'
   export default {
-    mounted () {
-      this.clearState()
-    },
     methods: {
-      ...mapActions(['clearState'])
+      ...mapActions(['resetGameSettings', 'activatePlayerGameMode', 'activateComputerGameMode'])
+    },
+    mounted () {
+      this.resetGameSettings()
     }
   }
 </script>

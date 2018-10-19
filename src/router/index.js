@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import Welcome from '@/components/Welcome'
-import PlayerMode from '@/components/PlayerMode'
+import Game from '@/components/Game'
 import GameOver from '@/components/GameOver'
 import About from '@/components/About'
 
@@ -15,9 +15,9 @@ export default new Router({
       component: Welcome
     },
     {
-      path: '/player_game',
-      name: 'PlayerMode',
-      component: PlayerMode
+      path: '/game',
+      name: 'Game',
+      component: Game
     },
     {
       path: '/game_over',

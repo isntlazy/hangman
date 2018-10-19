@@ -25,18 +25,28 @@
   import { mapGetters, mapActions } from 'vuex'
   export default {
     created () {
-      const firstLetter = this.wordToGuess.substring(0, 1)
-      const lastLetter = this.wordToGuess.slice(-1)
-      this.guessLetter(firstLetter)
-      if (firstLetter !== lastLetter) {
-        this.guessLetter(lastLetter)
+      this.setFirstAndLastLetters(this.wordToGuess)
+    },
+    watch: {
+      wordToGuess (newValue) {
+        this.setFirstAndLastLetters(newValue)
       }
     },
     computed: {
       ...mapGetters(['usedLetters', 'wordToGuess'])
     },
     methods: {
-      ...mapActions(['guessLetter'])
+      ...mapActions(['guessLetter']),
+      setFirstAndLastLetters (wordToGuess) {
+        if (wordToGuess.length) {
+          const firstLetter = wordToGuess.substring(0, 1)
+          const lastLetter = wordToGuess.slice(-1)
+          this.guessLetter(firstLetter)
+          if (firstLetter !== lastLetter) {
+            this.guessLetter(lastLetter)
+          }
+        }
+      }
     }
   }
 </script>

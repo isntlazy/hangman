@@ -1,5 +1,5 @@
 const state = {
-  gameMode: null, // 'player' or 'computer' - that's telling who is solving the word
+  gameMode: 'computer', // 'player' or 'computer' - that's telling who is solving the word
   hangmanStatus: 0,
   wordToGuess: 'Testing',
   usedLetters: [],
@@ -8,12 +8,23 @@ const state = {
 }
 
 const mutations = {
-  CLEAR_STATE (state) {
-    state.gameMode = null
-    state.hangmanStatus = 0
+  RESET_GAME_SETTINGS (state) {
     state.usedLetters = []
     state.gameIsOver = false
     state.isWinner = false
+  },
+  ACTIVATE_PLAYER_GAME_MODE (state) {
+    state.gameMode = 'player'
+    state.hangmanStatus = 0
+    state.wordToGuess = 'Testing'
+  },
+  ACTIVATE_COMPUTER_GAME_MODE (state) {
+    state.gameMode = 'computer'
+    state.hangmanStatus = 0
+    state.wordToGuess = ''
+  },
+  CHANGE_WORD_TO_GUESS (state, payload) {
+    state.wordToGuess = payload
   },
   CHANGE_HANGMAN_STATUS (state, payload) {
     state.hangmanStatus = payload
@@ -30,8 +41,19 @@ const mutations = {
 }
 
 const actions = {
-  clearState ({ commit }) {
-    commit('CLEAR_STATE')
+  resetGameSettings ({ commit }) {
+    commit('RESET_GAME_SETTINGS')
+  },
+  activatePlayerGameMode ({ commit }) {
+    commit('RESET_GAME_SETTINGS')
+    commit('ACTIVATE_PLAYER_GAME_MODE')
+  },
+  activateComputerGameMode ({ commit }) {
+    commit('RESET_GAME_SETTINGS')
+    commit('ACTIVATE_COMPUTER_GAME_MODE')
+  },
+  changeWordToGuess ({ commit }, payload) {
+    commit('CHANGE_WORD_TO_GUESS', payload)
   },
   changeHangmanStatus ({ commit }, payload) {
     commit('CHANGE_HANGMAN_STATUS', payload)
@@ -60,6 +82,7 @@ const actions = {
 
 const getters = {
   hangmanStatus: (state) => state.hangmanStatus,
+  gameMode: (state) => state.gameMode,
   wordToGuess: (state) => state.wordToGuess.toUpperCase(),
   usedLetters: (state) => state.usedLetters,
   gameIsOver: (state) => state.gameIsOver,
