@@ -16,7 +16,6 @@ const mutations = {
   ACTIVATE_PLAYER_GAME_MODE (state) {
     state.gameMode = 'player'
     state.hangmanStatus = 0
-    state.wordToGuess = 'Testing'
   },
   ACTIVATE_COMPUTER_GAME_MODE (state) {
     state.gameMode = 'computer'

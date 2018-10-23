@@ -33,10 +33,11 @@
   import { mapActions } from 'vuex'
   export default {
     methods: {
-      ...mapActions(['resetGameSettings', 'activatePlayerGameMode', 'activateComputerGameMode'])
+      ...mapActions(['resetGameSettings', 'getWordToGuess', 'activatePlayerGameMode', 'activateComputerGameMode'])
     },
     mounted () {
       this.resetGameSettings()
+      this.getWordToGuess()
     }
   }
 </script>
