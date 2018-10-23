@@ -1,7 +1,7 @@
 const state = {
   gameMode: 'computer', // 'player' or 'computer' - that's telling who is solving the word
   hangmanStatus: 0,
-  wordToGuess: 'Testing',
+  wordToGuess: '',
   usedLetters: [],
   gameIsOver: false,
   isWinner: false

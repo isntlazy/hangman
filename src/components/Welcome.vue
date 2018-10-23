@@ -15,8 +15,8 @@
       </v-card-title>
 
       <v-card-actions>
-        <v-btn @click="activatePlayerGameMode" to="/game" dark large>I want to solve the word</v-btn>
-        <v-btn @click="activateComputerGameMode" to="/game" large>I want computer to solve my word</v-btn>
+        <v-btn :disabled="!wordToGuess.length" @click="activatePlayerGameMode" to="/game" large>I want to solve the word</v-btn>
+        <v-btn :disabled="!wordToGuess.length" @click="activateComputerGameMode" to="/game" large>I want computer to solve my word</v-btn>
         <v-spacer></v-spacer>
       </v-card-actions>
 
@@ -30,10 +30,13 @@
 </template>
 
 <script>
-  import { mapActions } from 'vuex'
+  import { mapGetters, mapActions } from 'vuex'
   export default {
     methods: {
       ...mapActions(['resetGameSettings', 'getWordToGuess', 'activatePlayerGameMode', 'activateComputerGameMode'])
+    },
+    computed: {
+      ...mapGetters(['wordToGuess'])
     },
     mounted () {
       this.resetGameSettings()

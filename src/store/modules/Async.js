@@ -25,6 +25,10 @@ const actions = {
         const randomWord = filteredData[Math.floor(Math.random() * filteredData.length)].word
         commit('CHANGE_WORD_TO_GUESS', randomWord)
       })
+  },
+  checkWord ({ commit, getters }, wordToCheck) {
+    const url = `${getters.apiBaseUrl}/search/en?q=${wordToCheck}&prefix=false&limit=1`
+    return axios.get(url)
   }
 }
 
